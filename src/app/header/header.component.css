@@ -1,0 +1,26 @@
+nav {
+  display: flex;
+  column-gap: 2rem;
+  background-color: rgb(107, 43, 226);
+  padding: 1rem 2rem 1rem 2rem;
+  justify-content: space-between;
+}
+
+nav .nav-auth {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  column-gap: 2rem;
+}
+
+nav li, nav.nav-auth li {
+  color: whitesmoke;
+  list-style: none;
+  font-weight: bold;
+}
+
+nav li:hover, nav .nav-auth li:hover,
+nav li:active, nav .nav.auth li:active {
+  text-decoration:  underline;
+  cursor: pointer
+}

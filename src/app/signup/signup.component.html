@@ -1,0 +1,19 @@
+<div class="add-new-entry">
+  <h2> Jetzt registrieren </h2>
+  <form (ngSubmit)="submit()" [formGroup]="formGroup">
+    <div class="form-group">
+      <label for="name"> Name </label>
+      <input formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="email"> Email </label>
+      <input formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="password"> Password </label>
+      <input formControlName="password">
+    </div>
+    <button type="sumbit" class="btn"> registrieren </button>
+  </form>
+</div>
+

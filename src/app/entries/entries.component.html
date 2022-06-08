@@ -1,0 +1,26 @@
+<article>
+  <div class="add-new-entry">
+    <h2> Add new Entry ! </h2>
+    <form (ngSubmit)="submit()" [formGroup]="formGroup">
+      <div class="form-group">
+        <label for="title"> Title </label>
+        <input formControlName="title">
+      </div>
+      <div class="form-group">
+        <label for="content"> Content </label>
+        <input formControlName="content">
+      </div>
+      <button type="sumbit" class="btn"> senden </button>
+    </form>
+  </div>
+
+  <div class="existing-entries">
+    <h2> Our existing Entries </h2>
+    <div *ngFor="let entry of entries" class="single-entry">
+      <p> <b> Titel:</b> <em> {{entry.title }} </em>  </p>
+      <p> <b> Content:</b> <em> {{entry.content}} </em> </p>
+      <button (click)="deleteItem(entry._id)" class="btn-delete"> delete </button>
+    </div>
+  </div>
+
+</article>

@@ -1,0 +1,33 @@
+.add-new-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.form-group {
+  display: flex;
+  width: 280px;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  width: 8rem;
+  height: 2rem;
+  background-color: #6b2be2;
+  outline: none;
+  border: 1px solid whitesmoke;
+  border-radius: 3px;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+form {
+  text-align: center;
+}

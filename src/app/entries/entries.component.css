@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+}
+
+.add-new-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.form-group {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  width: 6rem;
+  height: 2rem;
+  background-color: #6b2be2;
+  outline: none;
+  border: 1px solid whitesmoke;
+  border-radius: 3px;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+form {
+  text-align: center;
+}
+
+
+.existing-entries {
+  background-color: #c6aff01f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 0 5rem 0;
+}
+
+
+.single-entry{
+  border: #6b2be2 solid 1px;
+  border-radius: 3px;
+  padding: 1rem;
+  width: 50vw;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-delete {
+  width: 6rem;
+  height: 2rem;
+  background-color: #c0a4f5;
+  outline: none;
+  border: 1px solid whitesmoke;
+  border-radius: 3px;
+  color: black;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.btn-delete:hover, .btn:hover {
+  cursor: pointer
+}

@@ -5,8 +5,8 @@ const dbKey = require('./databse-key');
 const { graphqlHTTP } = require('express-graphql');
 const graphQLschema = require('./graphql/schema');
 const graphQLresolver = require('./graphql/resolvers');
-const { formatError } = require('graphql');
 const app = express();
+const authCheck = require('./middleware/is-auth');
 
 // app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -18,8 +18,14 @@ app.use((req, res, next) => {
     'OPTIONS, GET, POST, PUT, PATCH, DELETE'
   );
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Header');
+
+  if(req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
   next();
 });
+
+app.use(authCheck);
 
 app.use('/graphql', graphqlHTTP({
   schema: graphQLschema,
@@ -27,8 +33,8 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true, // wir nutzen app.use und nicht post da diese config einen GET Request auf das Test-Interface von GraphQL zulässt
   customFormatErrorFn: error => ({
     message: error.message || 'An error occurred.',
-    code: error.originalError.code || 500,
-    data: error.originalError.data
+    code: error.code || 500,
+    data: error.data
   })
 }))
 

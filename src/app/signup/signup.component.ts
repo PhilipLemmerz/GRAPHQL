@@ -22,7 +22,8 @@ export class SignupComponent implements OnInit {
   }
 
   submit() {
-    this.storeService.signUpUser(this.formGroup.value).subscribe(res => {
+    this.storeService.signUpUser(this.formGroup.value).subscribe( res => {
+      // check Errors in Res
       console.log(res);
       this.router.navigateByUrl('/login')
     })

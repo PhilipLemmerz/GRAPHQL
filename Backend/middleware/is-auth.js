@@ -1,25 +1,22 @@
 const jwt = require('jsonwebtoken');
 
-module.exports = (req, res , next) => {
-  const clientToken = req.get('Authorization').split(' ')[1]; // split 'BEARER' away
-  console.log(clientToken);
-  let decodedToken;
+module.exports = (req, res, next) => {
+  let clientToken = req.get('Authorization').split(' ')[1]; // split 'BEARER' away
 
+  if (clientToken === 'null') {
+    req.isAuthenticated = false
+    return next();
+  }
+  let decodedToken
   try {
-    decodedToken = jwt.verify(clientToken, 'thisIsOurSecrectKeyThatOnlyKnowOurServer')
+    decodedToken = jwt.verify(clientToken, 'ourSecureKeyForValidationTokenOnTheServer');
   }
-  catch (err) {
-    // techical issue
-    err.statusCode = 500;
-    throw err;
+  catch {
+    req.isAuthenticated = false;
+    return next()
   }
-  if(!decodedToken) {
-    // workt well but invalid Token
-    const error = new Error('Not Authenticated!')
-    error.statusCode = 401;
-    return next(error);
-  }
-  // we are authenticated and place the userID to req
-  req._id = decodedToken._id
+
+  req.isAuthenticated = true;
+  req.user_id = decodedToken.user_id;
   next();
 }

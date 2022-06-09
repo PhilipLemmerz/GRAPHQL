@@ -18,9 +18,9 @@ export class EntriesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.storeService.loadAll().subscribe((entries) => {
-      this.entries = entries;
-      console.log(this.entries);
+    this.storeService.loadAll().subscribe( (entries) => {
+      this.entries = entries.data.posts;
+      console.log(entries);
     });
   }
 
@@ -31,13 +31,15 @@ export class EntriesComponent implements OnInit {
 
   submit() {
     this.storeService.createEntry(this.formGroup.value).subscribe(entry => {
-      console.log(entry);
+      this.entries.push(entry.data.createPost);
+      console.log('new', entry)
     });
   }
 
   deleteItem(_id: any) {
     this.storeService.deleteOne(_id).subscribe(response => {
-      const deletedID = response.data._id;
+      console.log(response.data.deletePost._id);
+      const deletedID = response.data.deletePost._id;
       const index = this.entries.findIndex((entry: any) => entry._id == deletedID);
       this.entries.splice(index, 1);
     });

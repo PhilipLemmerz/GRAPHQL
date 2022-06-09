@@ -22,8 +22,11 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.storeService.login(this.formGroup.value).subscribe( res => {
-      localStorage.setItem('token', res.token);
-      this.router.navigateByUrl('');
+      console.log(res)
+      localStorage.setItem('token', res.data.login.token);
+      this.router.navigateByUrl('').then(() => {
+        window.location.reload();
+      });
     })
   }
 
